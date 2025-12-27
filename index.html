@@ -6,85 +6,183 @@
 <title>Sabareeswaran KV | Portfolio</title>
 
 <style>
+:root{
+  --bg:#f5f7fb;
+  --text:#1f2937;
+  --card:#ffffff;
+  --accent:#2563eb;
+  --muted:#4b5563;
+}
+
+body.dark{
+  --bg:#0f172a;
+  --text:#e5e7eb;
+  --card:#1e293b;
+  --accent:#60a5fa;
+  --muted:#9ca3af;
+}
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Arial, sans-serif;
+  font-family:"Segoe UI",Arial,sans-serif;
 }
 
+html{ scroll-behavior:smooth; }
+
 body{
-  background:#f4f4f4;
-  color:#1f2937;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
 }
 
 .container{
-  max-width:900px;
+  max-width:1100px;
   margin:auto;
-  padding:30px 20px;
+  padding:40px 20px;
 }
 
-.header{
-  background:white;
-  padding:25px;
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
 .header h1{
-  font-size:32px;
+  font-size:38px;
+  font-weight:700;
 }
 
 .header p{
-  color:#4b5563;
-  margin-top:5px;
+  color:var(--muted);
+  margin-top:6px;
+  font-size:16px;
+  font-weight:500;
+}
+
+.toggle{
+  padding:10px 18px;
+  border:none;
+  border-radius:20px;
+  background:var(--accent);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
 }
 
 nav{
-  margin-top:15px;
+  margin-top:24px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
 }
 
 nav a{
   text-decoration:none;
-  margin-right:15px;
-  color:#020b1e;
-  font-weight:bold;
+  padding:10px 18px;
+  border-radius:20px;
+  background:rgba(37,99,235,0.15);
+  color:var(--accent);
+  font-weight:600;
+  font-size:14px;
+  transition:0.25s;
 }
 
-.section{
-  background:white;
-  padding:25px;
-  margin-top:20px;
+nav a:hover{
+  background:var(--accent);
+  color:white;
+  transform:translateY(-2px);
 }
 
-.section h2{
-  margin-bottom:10px;
-  color:#061534;
+section{
+  margin-top:70px;
 }
 
-.edu-item{
-  margin-bottom:10px;
+section h2{
+  font-size:24px;
+  margin-bottom:20px;
+  font-weight:700;
 }
 
-.skills ul{
-  margin-left:20px;
+/* ===== CARD BASE ===== */
+.box,
+.skill,
+.contact-item{
+  background:var(--card);
+  padding:24px;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
+  transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s;
+  cursor:pointer;
 }
 
-.contact a{
-  display:block;
-  margin:6px 0;
-  color:#020f2a;
+/* Hover (desktop) */
+.box:hover,
+.skill:hover,
+.contact-item:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 70px rgba(0,0,0,0.25);
+}
+
+/* Active (touch / click) */
+.box:active,
+.skill:active,
+.contact-item:active{
+  transform:translateY(-4px) scale(0.98);
+  box-shadow:0 20px 45px rgba(0,0,0,0.35);
+}
+
+/* Touch JS class */
+.active-touch{
+  transform:translateY(-10px);
+  box-shadow:0 35px 80px rgba(0,0,0,0.35);
+}
+
+/* ===== LAYOUTS ===== */
+.edu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+
+.skill-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:18px;
+}
+
+.skill{
+  text-align:center;
+  font-weight:600;
+}
+
+.project{
+  border-left:6px solid var(--accent);
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.contact-item{
   text-decoration:none;
-  font-weight:bold;
-}
-
-.contact a:hover{
-  text-decoration:underline;
+  color:inherit;
+  font-weight:500;
 }
 
 footer{
   text-align:center;
-  margin-top:30px;
-  color:#6b7280;
+  margin-top:60px;
+  color:var(--muted);
   font-size:14px;
+}
+
+@media(max-width:600px){
+  .header h1{font-size:28px;}
 }
 </style>
 </head>
@@ -93,83 +191,84 @@ footer{
 
 <div class="container">
 
-  <div class="header">
-    <h1>SABAREESWARAN  KV</h1>
-    <p>COMPUTER SCIENCE AND ENGINEERING STUDENT</p>
+  <div class="top-bar">
+    <div class="header">
+      <h1>SABAREESWARAN KV</h1>
+      <p>COMPUTER SCIENCE AND ENGINEERING STUDENT</p>
+    
 
-    <nav>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#project">Project</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <div class="section" id="about">
+  <section id="about">
     <h2>About Me</h2>
-    <p>
-      I am a Computer Science and Engineering student with an interest in
-      web development and problem solving. I enjoy learning new technologies
-      and improving my programming skills.
-    </p>
-  </div>
+    <div class="box">
+      I am a Computer Science and Engineering student with a strong interest in web development and problem solving. I enjoy learning new technologies and building clean, effective solutions while improving my fundamentals.
+    </div>
+  </section>
 
-  <div class="section" id="education">
+  <section id="education">
     <h2>Education</h2>
-    <div class="edu-item">
-      <strong>B.E – Computer Science</strong><br>
-      Bannari Amman Institute of Technology (2024 – 2028)
+    <div class="edu-grid">
+      <div class="box">
+        <h3>B.E – Computer Science</h3>
+        <p>Bannari Amman Institute of Technology</p>
+        <p>2024 – 2028</p>
+      </div>
+      <div class="box">
+        <h3>HSC</h3>
+        <p>Sri Vidyasaagar Educational Institutions</p>
+        <p>2023 – 2024</p>
+      </div>
+      <div class="box">
+        <h3>SSLC</h3>
+        <p>Sri Vidyasaagar Educational Institutions</p>
+        <p>2021 – 2022</p>
+      </div>
     </div>
-    <div class="edu-item">
-      <strong>HSC</strong><br>
-      Sri Vidyasaagar Educational Institutions (2023 – 2024)
-    </div>
-    <div class="edu-item">
-      <strong>SSLC</strong><br>
-      Sri Vidyasaagar Educational Institutions (2021 – 2022)
-    </div>
-  </div>
+  </section>
 
-  <div class="section skills" id="skills">
+  <section id="skills">
     <h2>Technical Skills</h2>
-    <ul>
-      <li>HTML (Basic)</li>
-      <li>CSS (Basic)</li>
-      <li>C (Basic to Intermediate)</li>
-      <li>Python (Basic)</li>
-    </ul>
-  </div>
+    <div class="skill-grid">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">C</div>
+      <div class="skill">Python</div>
+    </div>
+  </section>
 
-  <div class="section contact" id="contact">
+  <section id="project">
+    <h2>Project</h2>
+    <div class="box project">
+      <h3>Portfolio & SDG Smart Infrastructure Concept</h3>
+      <p>
+        Built a responsive personal portfolio using HTML and CSS.
+        Designed a conceptual SDG Smart Infrastructure & Innovation Hub
+        integrating IoT models, AI/ML insights, and cloud technologies.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
+    <div class="contact-grid">
+      <a class="contact-item box" href="mailto:sabareeswarankv.cs24@bitsathy.ac.in">📧 Email</a>
+      <a class="contact-item box" href="tel:+917708870250">📞 Phone</a>
+      <a class="contact-item box" href="https://www.linkedin.com/in/sabareeswaran-k-v-098493326/" target="_blank">🔗 LinkedIn</a>
+      <a class="contact-item box" href="https://github.com/sabareeswarankv" target="_blank">💻 GitHub</a>
+      <a class="contact-item box" href="https://leetcode.com/u/swankv/" target="_blank">🧠 LeetCode</a>
+    </div>
+  </section>
 
-    <a href="mailto:sabareeswarankv.cs24@bitsathy.ac.in">
-      Email
-    </a>
-    <a href="Phone:+91 7708870250">
-      Phone
-    </a>
-
-    <a href="https://www.linkedin.com/in/sabareeswaran-k-v-098493326/" target="_blank">
-      LinkedIn
-    </a>
-
-    <a href="https://github.com/sabareeswarankv" target="_blank">
-      GitHub
-    </a>
-
-    <a href="https://leetcode.com/u/swankv/" target="_blank">
-      LeetCode
-    </a>
-
-  </div>
-
-  <footer>
-    © 2025 Sabareeswaran KV
-  </footer>
+  <footer>2025 © Sabareeswaran KV</footer>
 
 </div>
 
 </body>
 </html>
-
